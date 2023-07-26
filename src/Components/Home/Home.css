@@ -1,0 +1,12 @@
+.imageFeeds{
+    columns: 2;
+    gap: 10px;
+}
+.imageFeed{
+    margin: 0;
+    padding: 0;
+    break-inside: avoid;
+}
+.imageFeed>img{
+    width: 190px;
+}

@@ -1,0 +1,22 @@
+.headerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding :1.5rem 0 1.5rem 0;
+}
+
+.headerContainer>img.logo{
+    height: 50px;
+    margin-left: 20px; 
+}
+
+.headerLinks{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerLink{
+    height: 30px;
+    margin-right: 15px;
+}
