@@ -31,5 +31,8 @@
     right: 10px;
 }
 .likeButton:hover{
-    position: pointer;
+    cursor: pointer;
+}
+.imageFeed:hover{
+    cursor: pointer;
 }
