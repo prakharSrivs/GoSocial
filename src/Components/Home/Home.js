@@ -3,11 +3,13 @@ import Header from '../Header/Header'
 import './Home.css'
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
 
     const [posts,setPosts]=useState([]);
     const [reload,setReload]=useState(false);
+    const navigate=useNavigate();
 
     useEffect(()=>{
         const url = process.env.REACT_APP_BACKEND_ENDPOINT+"posts/"
@@ -35,7 +37,8 @@ function Home() {
         .catch((er)=> alert(er.message))
     }
 
-    const handleLikeClick =async (id)=>{
+    const handleLikeClick =async (e,id)=>{
+        e.stopPropagation();    
         if(localStorage.getItem("authorization")) 
         makeApiRequestToLike(id);
         else 
@@ -55,9 +58,9 @@ function Home() {
             {
                 posts.map((post,index)=>{
                     return (
-                    <div className='imageFeed' key={index}>
+                    <div className='imageFeed' key={index} onClick={()=>navigate("/feed")}>
                         <img src={post.imageURL} />
-                        <button className="likeButton" onClick={()=> handleLikeClick(post.id)}> 
+                        <button className="likeButton" onClick={(e)=> handleLikeClick(e,post.id)}> 
                             <img src={post.liked ? "/heartFilled.svg" : "heart.svg"} alt='likeButton'/>
                         </button> 
                     </div>

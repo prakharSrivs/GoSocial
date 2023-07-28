@@ -42,6 +42,8 @@ function Signup() {
         {
             localStorage.setItem("authorization",response.token);
             localStorage.setItem("userId",response.userId)
+            localStorage.setItem("username",response.username)
+            localStorage.setItem("imageURL",response.imageURL)
             navigate('/')
         }
         else {
@@ -62,7 +64,7 @@ function Signup() {
                     {
                         image?
                         <div className='authBoxText authSubHeading'>{image.name}</div> :
-                        <label for="image-input" className='authBoxText authSubHeading'>Your Profile Image</label>
+                        <label for="image-input" className='authBoxText authSubHeading'>Upload Profile Image</label>
                     }
                     <input id='image-input' type='file' onChange={(e)=> setImage(e.target.files[0])} required/>
                 </div>

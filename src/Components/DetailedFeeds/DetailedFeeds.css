@@ -71,7 +71,7 @@ body{
 }
 .postLikes{
     font-family: Arial, Helvetica,sans-serif;
-    font-size:12px;
+    font-size:14px;
     line-height: 14px;
     color: #707070dc;
     padding:0.5rem 1.5rem;
@@ -83,10 +83,9 @@ body{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-right: -20px;
 }
 .postLikesProfileImages>img{
-    width: 25px;
+    width: 35px;
     border-radius: 35px;
     position: relative;
 }
@@ -103,7 +102,14 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
     color: #707070dc;
-    font-size: 12px;
+    font-size: 16px;
     padding:0.5rem 1rem;
     padding-bottom: 1.5rem;
+}
+.postImage{
+    display: flex;
+}
+.postImage>button>img{
+    top: -20px !important;
+    right: 50px !important;
 }

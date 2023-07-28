@@ -28,8 +28,10 @@ function Login() {
         const response = await makeApiRequestForLogin(email,password);
         if(response.token)
         {
-        localStorage.setItem("authorization",response.token);
+            localStorage.setItem("authorization",response.token);
             localStorage.setItem("userId",response.uid)
+            localStorage.setItem("username",response.username)
+            localStorage.setItem("imageURL",response.imageURL)
             navigate('/home')
         }  
         else{

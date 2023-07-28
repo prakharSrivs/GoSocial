@@ -14,6 +14,8 @@ function Header() {
     {
       localStorage.removeItem("authorization");
       localStorage.removeItem("userId");
+      localStorage.removeItem("username");
+      localStorage.removeItem("imageURL");
       setAuthStatus("Log In")
       window.location.reload();
     }
