@@ -1,5 +1,9 @@
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import Home from './Components/Home/Home';
+import DetailedFeeds from "./Components/DetailedFeeds/DetailedFeeds";
+import CreatePost from "./Components/CreatePost/CreatePost";
+import Signup from "./Components/Signup/Signup";
+import Login from "./Components/Login/Login";
 
 function App() {
   return (
@@ -7,10 +11,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
-        {/* <Route path="*" element={<Navigate to="/not-found" replace />} /> */}
-        <Route path='/projects' element={<></>} />
-
-        {/* <Route path='/not-found' element={<Error />} /> */}
+        <Route path='/feed' element={<DetailedFeeds />} />
+        <Route path="/post/create" element={<CreatePost/>} />
+        <Route path="/user/login" element={<Login/>} />
+        <Route path="/user/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

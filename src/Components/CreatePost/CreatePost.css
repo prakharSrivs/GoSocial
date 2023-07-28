@@ -1,0 +1,65 @@
+.createPostsHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+.postButton{
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: white;
+    background-color: #00B2E8;
+    border-radius: 33px;
+    padding: 0.6rem 3rem;
+}
+.createPostsBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem ;
+}
+.postImageLabel{
+    border: 3px dashed rgba(0, 0, 0, 0.803);
+    border-radius: 3px;
+    width: 90%;
+    text-align: center;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 1rem;
+    color: #0198C6;
+}
+.label{
+    font-family: "Poppins",sans-serif;
+    font-weight:600;
+    color: #0198C6;
+}
+.descriptionInput{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+#story:focus {
+    outline: none !important;
+}
+#story{
+    outline: none !important;
+    border:3px solid #0198C6;
+    border-radius: 9px;
+    padding: 0.5rem;
+    width: 90% ;
+}
+
+.createPostForm>div{
+    margin-top: 1rem;
+}
+
+.button:hover{
+    cursor:pointer;
+}

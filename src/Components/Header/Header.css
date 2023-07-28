@@ -3,6 +3,9 @@
     justify-content: space-between;
     align-items: center;
     padding :1.5rem 0 1.5rem 0;
+    background-color:white;
+    margin-bottom: 0.5rem;
+    width: 100vw;
 }
 
 .headerContainer>img.logo{
@@ -15,8 +18,13 @@
     justify-content: space-between;
     align-items: center;
 }
-
+.headerLinks>button{
+    margin-right: 1rem;
+}
 .headerLink{
     height: 30px;
     margin-right: 15px;
+}
+.headerLink:hover{
+    cursor:pointer;
 }

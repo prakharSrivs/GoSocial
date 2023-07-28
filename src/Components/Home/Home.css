@@ -1,7 +1,33 @@
+.homePageContainer{
+    background-color: #FAFAFA;
+}
+.imageFeeds{
+    padding:0 0.5rem;
+}
 .imageFeed{
     margin: 0;
     padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .imageFeed>img{
-    width: 190px;
+    width: 100%;
+    border-radius: 8px;
+}
+.likeButton{
+    height: 0;
+    align-self: flex-end;
+}
+.likeButton>img{
+    width: 25px;
+    color: red;
+    position: relative;
+    top:-40px;
+    right: 10px;
+}
+.likeButton:hover{
+    position: pointer;
 }

@@ -1,0 +1,113 @@
+.authContainer{
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.authBox{
+    margin-top: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(128, 128, 128, 0.196);
+    border-radius: 10px;
+    padding:2rem 4rem;
+    min-width: 350px;
+}
+.authBox>.logo{
+    max-height: 45px;
+    padding: 1rem;
+}
+.authBoxText{
+    font-family: 'Ubuntu',sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+}
+.authBoxLink{
+    color: #1A73E8;
+    font-weight: 500;
+}
+.authBoxLink:hover{
+    cursor: pointer;
+}
+.authHeading{
+    font-size: 26px;
+    text-align: center;
+    padding-top: 1rem;
+    font-weight: 500;
+}
+.authSubHeading{
+    font-weight: 400;
+    font-size: 18px;
+    padding: 1rem;
+}
+.authForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+}
+.authForm>div{
+    margin-bottom: 1rem;
+}
+.authFormActionButton{
+    background-color:#1B66C9;
+    border: none;
+    font-size: 16px;
+    color: white;
+    font-weight:400;
+    font-family: "Ubuntu",sans-serif;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+}
+.authFormActionButton:hover{
+    cursor:pointer;
+}
+.authAlternateAction{
+    font-size: 14px;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db; 
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+.imageInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.imageInput>input{
+    display: none;
+}
+.avatarImage{
+    border: 8px solid rgb(233, 233, 233);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+.imageInputLabel{
+    background-image:url('/public/avatar.png') ;
+    background-size: cover;
+}
+.imageInput>label:hover{
+    cursor: pointer;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@media only screen and (max-width: 600px) {
+    .authBox {
+      min-width: 250px;
+      margin-top: 2rem;
+      padding: 3rem;
+    }
+  }

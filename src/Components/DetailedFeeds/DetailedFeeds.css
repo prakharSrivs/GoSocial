@@ -1,0 +1,109 @@
+body{
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+}
+.feedsContainer{
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+}
+.posts{
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.75rem;
+    padding-top: 0;
+    max-width: 600px;
+}
+.postContainer{
+    background-color: white;
+    text-align: left;
+    border-radius: 25px;
+    margin: 0;
+    box-shadow: 0 3px 6px #00000029;
+    margin-top: 1.5rem;
+}
+.postHeader{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:0.5rem 1rem;
+}
+.profileImage>img{
+    height: 35px;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 1px 5px #00000029;
+}
+.profileImage{
+    border: 5px solid white;
+    border-radius: 50%;
+}
+.profileDetails{
+    margin-left: 10px;
+}
+.profileDetails>.username{
+    font-family: "Poppins",sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+}
+.profileDetails>.locationAndTime{
+    font-family:"Poppins",sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    color: #808080;
+}
+.options{
+    margin-left: auto;
+}
+.options>img{
+    width: 30px;
+}
+
+.postImage>img{
+    width: 100%;
+    border-radius: 8px;
+}
+.postLikes{
+    font-family: Arial, Helvetica,sans-serif;
+    font-size:12px;
+    line-height: 14px;
+    color: #707070dc;
+    padding:0.5rem 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.postLikes>div.postLikesProfileImages{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: -20px;
+}
+.postLikesProfileImages>img{
+    width: 25px;
+    border-radius: 35px;
+    position: relative;
+}
+.postLikesProfileImages>img:nth-child(1){
+    left: -10px;
+}
+.postLikesProfileImages>img:nth-child(2){
+    left: -20px;
+}
+.postLikesProfileImages>img:nth-child(3){
+    left: -30px;
+}
+.postDescription{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: #707070dc;
+    font-size: 12px;
+    padding:0.5rem 1rem;
+    padding-bottom: 1.5rem;
+}
