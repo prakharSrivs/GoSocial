@@ -82,7 +82,7 @@ function DetailedFeeds() {
                       post.likes[0].userName===localStorage.getItem("username") ?
                       "You Liked the Post":
                       post.likes[0].userName+" Liked the post":
-                      post.likes[0].userName+" "+post.likes.length-1+" others emoted" )                   
+                      post.likes[0].userName+" and "+ post.likes.length +" others emoted" )                   
                     }
                   </div>
                   <div className="postDescription">
