@@ -13,9 +13,9 @@ function Header() {
     if(authStatus=="Log Out")
     {
       localStorage.removeItem("authorization");
-      localStorage.removeItem("username");
-      localStorage.removeItem("profile")
+      localStorage.removeItem("userId");
       setAuthStatus("Log In")
+      window.location.reload();
     }
     else if(authStatus=="Log In")
     {
@@ -23,11 +23,21 @@ function Header() {
     }
   }
 
+  const handleCreatePostClick = ()=>{
+    if(!localStorage.getItem('authorization'))
+    {
+      alert("User Need to be logged in to Create a post");
+    }
+    else{
+      navigate("/post/create")
+    }
+  }
+
   return (
     <div className='headerContainer'>
         <img className='logo' src='/logoOnBoarding.png' />
         <div className="headerLinks">
-            <div className="createPostButton" onClick={()=> navigate('/post/create')}>
+            <div className="createPostButton" onClick={handleCreatePostClick}>
                 <img src='/addPost.svg' className='headerLink' />
             </div>
             <div className="searchPostsButton">

@@ -18,8 +18,10 @@
     border-radius: 8px;
 }
 .likeButton{
-    height: 0;
     align-self: flex-end;
+    border: 0;
+    background-color: none;
+    background: none;
 }
 .likeButton>img{
     width: 25px;

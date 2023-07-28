@@ -11,7 +11,7 @@ function Login() {
     const navigate = useNavigate();
 
     const makeApiRequestForLogin =async (email,password)=>{
-        const url="http://localhost:4500/users/login"
+        const url=process.env.REACT_APP_BACKEND_ENDPOINT+"users/login"
         const response = await fetch(url,{
             method:"POST",
             headers:{
@@ -29,7 +29,7 @@ function Login() {
         if(response.token)
         {
         localStorage.setItem("authorization",response.token);
-            localStorage.setItem("username",response.username)
+            localStorage.setItem("userId",response.uid)
             navigate('/home')
         }  
         else{

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './CreatePost.css'
 import { Navigate, useNavigate } from 'react-router-dom'
 
@@ -9,6 +9,14 @@ function CreatePost() {
   const [description,setDescription]=useState();
   const [location,setLocation] = useState();
   const [loading,setLoading]=useState(false);
+
+  useEffect(()=>{
+    if(!localStorage.getItem("authorization")) 
+    {
+      alert("You need to be logged in to Create a Post")
+      navigate('/user/login')
+    }
+  },[])
 
   const makeApiRequestForImageUpload = async (image)=>{
     const formData = new FormData();
@@ -21,7 +29,7 @@ function CreatePost() {
   }
 
   const makeApiRequestForSignUp = async (location,description,imageURL)=>{
-    const url = 'http://localhost:4500/post/create'
+    const url =process.env.REACT_APP_BACKEND_ENDPOINT+'post/create'
     const response = await fetch(url, {
         method:"POST",
         headers:{
@@ -35,9 +43,7 @@ function CreatePost() {
 
   const handleSubmit =async () =>{
     setLoading(true)
-    console.log("Uploading Image")
     const imageResponse = await makeApiRequestForImageUpload(image);
-    console.log("Image Uploaded",imageResponse)
     const response=await makeApiRequestForSignUp(location,description,imageResponse.url);
     if(response.message==="Post Created Successfully")
     {

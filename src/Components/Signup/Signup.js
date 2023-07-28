@@ -13,7 +13,7 @@ function Signup() {
     const navigate = useNavigate();
 
     const makeApiRequestForSignUp = async (email,username,password,imageURL)=>{
-        const url = 'http://localhost:4500/users/signup'
+        const url = process.env.REACT_APP_BACKEND_ENDPOINT+'users/signup'
         const response = await fetch(url, {
             method:"POST",
             headers:{
@@ -36,16 +36,12 @@ function Signup() {
     const handleSubmit =async (e) =>{
         e.preventDefault();
         setLoading(true)
-        console.log("Uploading Image")
         const imageResponse = await makeApiRequestForImageUpload(image);
-        console.log("Image Uploaded",imageResponse)
         const response=await makeApiRequestForSignUp(email,username,password,imageResponse.url);
-        console.log("Data Stored")
         if(response.token)
         {
             localStorage.setItem("authorization",response.token);
-            localStorage.setItem("username",response.username)
-            localStorage.setItem("profile",imageResponse.url)
+            localStorage.setItem("userId",response.userId)
             navigate('/')
         }
         else {
@@ -68,7 +64,7 @@ function Signup() {
                         <div className='authBoxText authSubHeading'>{image.name}</div> :
                         <label for="image-input" className='authBoxText authSubHeading'>Your Profile Image</label>
                     }
-                    <input id='image-input' type='file' onChange={(e)=> setImage(e.target.files[0])} />
+                    <input id='image-input' type='file' onChange={(e)=> setImage(e.target.files[0])} required/>
                 </div>
                 <TextField 
                     fullWidth

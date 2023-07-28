@@ -1,37 +1,69 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
 import './Home.css'
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
+import axios from 'axios'
 
 function Home() {
 
+    const [posts,setPosts]=useState([]);
+    const [reload,setReload]=useState(false);
+
+    useEffect(()=>{
+        const url = process.env.REACT_APP_BACKEND_ENDPOINT+"posts/"
+        fetch(url,{
+            headers:{
+                userId:localStorage.getItem("userId")
+            }
+        })
+        .then(async(res)=>  await res.json())
+        .then(({posts}) => setPosts(posts))
+        .catch((e)=>console.log(e));
+    },[reload])
+
+    const makeApiRequestToLike =async (id)=>{
+        const url =process.env.REACT_APP_BACKEND_ENDPOINT+"post/like"
+        await fetch(url,{
+            method: 'POST',
+            headers: {
+              authorization: localStorage.getItem("authorization"),
+              'Content-Type': 'application/json', 
+              'postid':id,
+            },
+            body: JSON.stringify({postId:id}),
+          }).then(()=> setReload(!reload))
+        .catch((er)=> alert(er.message))
+    }
+
+    const handleLikeClick =async (id)=>{
+        if(localStorage.getItem("authorization")) 
+        makeApiRequestToLike(id);
+        else 
+        alert("You must be logged in to like a post")
+    }
 
   return (
     <div className='homePageContainer'>
         <Header />
         <div className="imageFeeds">
+            {
+                posts.length==0 &&
+                <h1 className="authBoxText">No Posts Available Currently</h1>
+            }
             <ResponsiveMasonry columnsCountBreakPoints={{400: 2,600:3, 750: 4, 900: 6}}>
             <Masonry columnsCount={1} gutter={"5px"}>
-                <div className='imageFeed'>
-                    <img src="/post1.jpeg" />
-                    <div className="likeButton"> <img src='/heart.svg' /></div> 
-                </div>
-                <div className='imageFeed'>
-                    <img src="/post2.jpeg" />
-                    <div className='likeButton'><img src='/heart.svg' /></div>
-                </div>
-                <div className='imageFeed'>
-                    <img src="/post3.jpg" />
-                    <div className='likeButton'><img src='/heart.svg' /></div>
-                </div>
-                <div className='imageFeed'>
-                    <img src="/post4.jpeg" />
-                    <div className='likeButton'><img src='/heart.svg' /></div>
-                </div>
-                <div className='imageFeed'>
-                    <img src="/post5.jpeg" />
-                    <div className='likeButton'><img src='/heart.svg' /></div>
-                </div>
+            {
+                posts.map((post,index)=>{
+                    return (
+                    <div className='imageFeed' key={index}>
+                        <img src={post.imageURL} />
+                        <button className="likeButton" onClick={()=> handleLikeClick(post.id)}> 
+                            <img src={post.liked ? "/heartFilled.svg" : "heart.svg"} alt='likeButton'/>
+                        </button> 
+                    </div>
+                    )
+                })
+            }
             </Masonry>
             </ResponsiveMasonry>
         </div>
