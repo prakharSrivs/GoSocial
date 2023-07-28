@@ -66,7 +66,7 @@ function Signup() {
                         <div className='authBoxText authSubHeading'>{image.name}</div> :
                         <label for="image-input" className='authBoxText authSubHeading'>Upload Profile Image</label>
                     }
-                    <input id='image-input' type='file' onChange={(e)=> setImage(e.target.files[0])} required/>
+                    <input id='image-input' type='file' accept='image/*' onChange={(e)=> setImage(e.target.files[0])} required/>
                 </div>
                 <TextField 
                     fullWidth

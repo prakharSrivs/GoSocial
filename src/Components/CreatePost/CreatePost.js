@@ -103,7 +103,7 @@ function CreatePost() {
                       image &&
                       <div className='authBoxText authSubHeading '>{image.name}</div> 
                   }
-                  <input id='image-input' type='file' onChange={(e)=> setImage(e.target.files[0])} />
+                  <input id='image-input' type='file' accept='image/*' onChange={(e)=> setImage(e.target.files[0])} />
               </div>
           </form>
         </div>
