@@ -13,6 +13,9 @@
     flex-direction: column;
     align-items: center;
 }
+.imageFeed>button{
+    height: 0 !important;
+}
 .imageFeed>img{
     width: 100%;
     border-radius: 8px;
