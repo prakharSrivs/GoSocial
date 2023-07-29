@@ -29,6 +29,8 @@ function Home() {
 
     const makeApiRequestToLike =async (post)=>{
         const id=post.id;
+        post.loading=true;
+        setPosts(posts.splice(posts.indexOf(post),1,post))
         const url =process.env.REACT_APP_BACKEND_ENDPOINT+"post/like"
         await fetch(url,{
             method: 'POST',
@@ -36,10 +38,11 @@ function Home() {
               authorization: localStorage.getItem("authorization"),
               'Content-Type': 'application/json', 
               'postid':id,
-            },
+            },  
             body: JSON.stringify({postId:id}),
           }).then(()=>{
                 post.liked = !post.liked;
+                post.loading=false;
                 let tempPosts =posts.splice(posts.indexOf(post),1,post) 
                 setPosts(tempPosts);
           })
@@ -69,8 +72,11 @@ function Home() {
                     return (
                     <div className='imageFeed' key={index} onClick={()=>navigate("/feed")}>
                         <img src={post.imageURL} />
-                        <button className="likeButton" onClick={(e)=> handleLikeClick(e,post)}> 
+                        <button className="likeButton" onClick={(e)=> handleLikeClick(e,post)}>
+                        {
+                            post.loading ? <div className="loader"></div> :
                             <img src={post.liked ? "/heartFilled.svg" : "heart.svg"} alt='likeButton'/>
+                        } 
                         </button> 
                     </div>
                     )
