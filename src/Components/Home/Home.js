@@ -18,11 +18,17 @@ function Home() {
             }
         })
         .then(async(res)=>  await res.json())
-        .then(({posts}) => setPosts(posts))
+        .then(({posts}) =>{
+            let tempPosts = posts.map((post)=> {
+                return {...posts,loading:false};
+            })
+            setPosts(posts)
+        })
         .catch((e)=>console.log(e));
     },[])
 
-    const makeApiRequestToLike =async (id)=>{
+    const makeApiRequestToLike =async (post)=>{
+        const id=post.id;
         const url =process.env.REACT_APP_BACKEND_ENDPOINT+"post/like"
         await fetch(url,{
             method: 'POST',
@@ -33,20 +39,17 @@ function Home() {
             },
             body: JSON.stringify({postId:id}),
           }).then(()=>{
-                let tempPosts = posts;
-                tempPosts = tempPosts.map((post)=> {
-                    if(post.id===id) return {...post,liked:!post.liked};
-                    else return post;
-                })
+                post.liked = !post.liked;
+                let tempPosts =posts.splice(posts.indexOf(post),1,post) 
                 setPosts(tempPosts);
           })
         .catch((er)=> alert(er.message))
     }
 
-    const handleLikeClick =async (e,id)=>{
+    const handleLikeClick =async (e,post)=>{
         e.stopPropagation();    
         if(localStorage.getItem("authorization")) 
-        makeApiRequestToLike(id);
+        makeApiRequestToLike(post);
         else 
         alert("You must be logged in to like a post")
     }
@@ -66,7 +69,7 @@ function Home() {
                     return (
                     <div className='imageFeed' key={index} onClick={()=>navigate("/feed")}>
                         <img src={post.imageURL} />
-                        <button className="likeButton" onClick={(e)=> handleLikeClick(e,post.id)}> 
+                        <button className="likeButton" onClick={(e)=> handleLikeClick(e,post)}> 
                             <img src={post.liked ? "/heartFilled.svg" : "heart.svg"} alt='likeButton'/>
                         </button> 
                     </div>
