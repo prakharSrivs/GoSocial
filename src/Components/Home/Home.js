@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom'
 function Home() {
 
     const [posts,setPosts]=useState([]);
-    const [reload,setReload]=useState(false);
     const navigate=useNavigate();
 
     useEffect(()=>{
@@ -21,7 +20,7 @@ function Home() {
         .then(async(res)=>  await res.json())
         .then(({posts}) => setPosts(posts))
         .catch((e)=>console.log(e));
-    },[reload])
+    },[])
 
     const makeApiRequestToLike =async (id)=>{
         const url =process.env.REACT_APP_BACKEND_ENDPOINT+"post/like"
@@ -33,7 +32,14 @@ function Home() {
               'postid':id,
             },
             body: JSON.stringify({postId:id}),
-          }).then(()=> setReload(!reload))
+          }).then(()=>{
+                let tempPosts = posts;
+                tempPosts = tempPosts.map((post)=> {
+                    if(post.id===id) return {...post,liked:!post.liked};
+                    else return post;
+                })
+                setPosts(tempPosts);
+          })
         .catch((er)=> alert(er.message))
     }
 
