@@ -109,7 +109,7 @@ body{
 .postImage{
     display: flex;
 }
-.postImage>button>img{
+.postImage>button>img,.postImage>button>div{
     top: -20px !important;
     right: 50px !important;
 }
