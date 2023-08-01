@@ -1,6 +1,5 @@
-# ASSIGNMENT Highon 
-![logoOnBoarding](https://github.com/prakharSrivs/HighonFrontend/assets/93509188/1c6bf6fb-848e-4780-9c83-5670ec1a50f5) \
-
+# BACKEND REPO
+![Backend Repo](https://github.com/prakharsrivs/highonBackend)
 
 # ROUTES DIAGRAM 
 
