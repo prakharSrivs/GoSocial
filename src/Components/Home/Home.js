@@ -16,7 +16,7 @@ function Home() {
         setLoading(true);
         let url;
         if(process.env.REACT_APP_BACKEND_ENDPOINT) url = process.env.REACT_APP_BACKEND_ENDPOINT+"posts/";
-        else url = "/posts/"
+        else url = "https://go-social-backend.vercel.app/posts/"
         fetch(url,{
             headers:{
                 userId:localStorage.getItem("userId")
