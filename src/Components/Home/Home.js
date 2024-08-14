@@ -14,7 +14,9 @@ function Home() {
 
     useEffect(()=>{
         setLoading(true);
-        const url = process.env.REACT_APP_BACKEND_ENDPOINT+"posts/"
+        let url;
+        if(process.env.REACT_APP_BACKEND_ENDPOINT) url = process.env.REACT_APP_BACKEND_ENDPOINT+"posts/";
+        else url = "/posts/"
         fetch(url,{
             headers:{
                 userId:localStorage.getItem("userId")
