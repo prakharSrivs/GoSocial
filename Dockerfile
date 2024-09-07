@@ -1,4 +1,4 @@
-FROM node:20.15.0-slim
+FROM node:20.15.0-alpine3.20
 
 WORKDIR /opt/dir
 
